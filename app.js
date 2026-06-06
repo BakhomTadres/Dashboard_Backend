@@ -32,3 +32,4 @@ app.use((req, res) => {
     .json({ status: "error", message: "Not found this resources" });
 });
 
+export default app;
