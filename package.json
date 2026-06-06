@@ -2,7 +2,7 @@
   "name": "backend-test",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "app.js": "index.js",
   "scripts": {
     "dev": "nodemon index.js"
   },
