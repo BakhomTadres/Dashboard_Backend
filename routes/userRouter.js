@@ -5,8 +5,10 @@ import {
   login,
   getCurrentUser,
   updateUser,
+  logout,
 } from "../controllers/userControllers.js";
 import { verifyToken } from "../middlewares/Auth.js";
+import {LoginProtected} from "../middlewares/LoginProtected.js"
 export const userRouter = express.Router();
 
 userRouter.route("/").get(getUsers);
@@ -15,4 +17,5 @@ userRouter
   .get(verifyToken, getCurrentUser)
   .patch(verifyToken, updateUser);
 userRouter.route("/register").post(register);
-userRouter.route("/login").post(login);
+userRouter.route("/login").post(LoginProtected,login);
+userRouter.route("/logout").post(verifyToken,logout);

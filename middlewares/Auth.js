@@ -1,8 +1,8 @@
 import JWT from "jsonwebtoken"
 export const verifyToken = async (req, res, next) => {
-    const authHaader = req.headers["Authorization"] || req.headers["authorization"];
+    const authHeader = req.headers["Authorization"] || req.headers["authorization"];
 
-    if (!authHaader) {
+    if (!authHeader) {
         return res.status(401).json("Token is required");
     }
     const token = authHaader.split(" ")[1];

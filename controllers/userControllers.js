@@ -83,3 +83,17 @@ export const login = async (req, res) => {
       .json({ status: "fail", message: "Incorrect password" });
   }
 };
+
+export const logout = async (req, res) => {
+    try {
+        const user = await User.findById(req.user.id);
+        if (!user) return res.status(404).json({ message: "User not found" });
+        
+        user.token = null;
+        await user.save();
+        
+        res.json({ message: "Logged out successfully" });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}
