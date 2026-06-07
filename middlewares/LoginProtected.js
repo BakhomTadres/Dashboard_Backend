@@ -5,7 +5,7 @@ export const LoginProtected = async (req, res, next) => {
     if (!token) return next();
 
     try {
-        JWT.decode(token, process.env.TOKEN_SECRET_KEY)
+        JWT.verify(token, process.env.TOKEN_SECRET_KEY)
         return (res.status(400).json("You are already logged in"));
     }
     catch {
